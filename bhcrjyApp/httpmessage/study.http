@@ -1,0 +1,50 @@
+#:student_course_study3:#
+GET /entity/student/student_course_study3.jsp HTTP/1.1
+Host: bhcj.webtrn.cn
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://bhcj.webtrn.cn/entity/student/student_left.jsp
+Accept-Encoding: gzip
+Accept-Language: zh-CN,zh;q=0.9
+Connection: keep-alive
+##:student_course_study3:##
+
+
+#:enter_class3:#
+GET /entity/student/[[class3_url]] HTTP/1.1
+Host: bhcj.webtrn.cn
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://bhcj.webtrn.cn/entity/student/student_course_study3.jsp
+Accept-Encoding: gzip
+Accept-Language: zh-CN,zh;q=0.9
+Connection: keep-alive
+##:enter_class3:##
+
+
+#:enter_cware:#
+GET /entity/function/enter_cware.jsp?teachclass_id=6989&course_name=%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF&enter_type=view&courseware_id=KJZ0091 HTTP/1.1
+Host: bhcj.webtrn.cn
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://bhcj.webtrn.cn/entity/student/student_course_study3.jsp
+Accept-Encoding: gzip
+Accept-Language: zh-CN,zh;q=0.9
+Connection: keep-alive
+##:enter_cware:##
+
+
+#:courseware_view:#
+GET /courseware/courseware_view.jsp?courseware_id=KJZ0091 HTTP/1.1
+Host: bhcj.webtrn.cn
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Referer: http://bhcj.webtrn.cn/entity/student/student_course_study3.jsp
+Accept-Encoding: gzip
+Accept-Language: zh-CN,zh;q=0.9
+Connection: keep-alive
+##:courseware_view:##

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- 强烈建议html根元素指定lang属性 -->
+
+<head>
+    <!-- 字符编码 -->
+    <meta charset="utf-8">
+    <!-- IE兼容模式。 除非有强烈的特殊需求，否则最好设置为edge mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>北航成人教育网</title>
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Jquery -->
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
+
+    <!-- layui模块 -->
+    <link rel='stylesheet' href="{{ url_for('static', filename='layui/css/layui.css') }}"/>
+    <script src="{{ url_for('static', filename='layui/layui.js') }}"></script>
+</head>
+
+<body>
+<div class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-xs12 layui-col-md12">
+            <ul class="layui-nav layui-bg-green">
+                <li class="layui-nav-item lay-unselect">
+                    <a class="lay-unselect" href="">北京航空航天大学</a>
+                </li>
+                <li class="layui-nav-item layui-this">
+                    <a href="">首页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="">课堂笔记</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="">话题</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{{ url_for('user.userinfo') }}">我的主页</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="{{ url_for('login.logout') }}">退出登录</a>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-col-xs6 layui-col-md8">
+            <div class="sktcs" style="margin: 50px;">
+                <button id="sktcs" type="button" class="layui-btn layui-btn-warm">201909学期课题直刷3科15次</button>
+            </div>
+        </div>
+        <div class="layui-col-xs6 layui-col-md4">
+
+        </div>
+    </div>
+</div>
+
+<script>
+			layui.use(['layer'], function() {
+				var layer = layui.layer;
+				var $ = layui.$;
+				// 打印Jquery版本
+				console.log($('.layui-container').jquery);
+
+				$("#sktcs").click(function() {
+				    layer.msg("稍等20秒左右，完成后会再次提示您");
+					$.ajax({
+						type: "post",
+						url: "{{ skipClass }}",
+						async: true,
+						success: function(data) {
+							layer.msg(data.data);
+							console.log(data);
+						}
+					});
+				});
+			});
+
+			// 打印设备信息
+			var mydevice = layui.device();
+			mydevice.webname = 'bhcjw';
+			console.log(mydevice);
+
+</script>
+</body>
+
+</html>

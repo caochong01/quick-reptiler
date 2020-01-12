@@ -1,0 +1,15 @@
+body {
+	margin: 0;
+}
+
+/* 响应式图像 */
+
+.img-responsive {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+.input-group {
+	margin-bottom: 30px;
+}

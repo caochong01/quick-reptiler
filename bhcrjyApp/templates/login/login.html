@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- 强烈建议html根元素指定lang属性 -->
+
+<head>
+    <!-- 字符编码 -->
+    <meta charset="utf-8">
+    <!-- IE兼容模式。 除非有强烈的特殊需求，否则最好设置为edge mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <title>北航成教登陆</title>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+    <!-- Bootstrap -->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+
+    <!-- 导入的CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/public.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"/>
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Jquery -->
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-3 col-sm-2 col-xs-1 column">
+        </div>
+        <div class="col-md-6 col-sm-8 col-xs-10 column border-log">
+            <div class="title-log">登录</div>
+            <form role="form">
+                <div class="input-group input-group-lg">
+							<span class="input-group-addon">
+								<i class="fa fa-user"></i>
+							</span>
+                    <input type="studentId" class="form-control" id="studentId" placeholder="请输入学号"/>
+                </div>
+                <div class="input-group input-group-lg">
+							<span class="input-group-addon">
+								<i class="fa fa-key fa-rotate-270"></i>
+							</span>
+                    <input type="password" class="form-control" id="password" placeholder="请输入密码"/>
+                </div>
+                <div class="input-group input-group-lg">
+							<span class="input-group-addon">
+								<i class="fa fa-key fa-rotate-270"></i>
+							</span>
+                    <input type="yzm" class="form-control" id="yzm" placeholder="请输入验证码"/>
+                    <a href="#" target="_blank">
+                        <img class="yzimage" src="{{ imgdata }}"/>
+                    </a>
+                </div>
+            </form>
+            <button id="submit" type="submit" class="btn btn-primary btn-block btn-lg submitbtn">Submit
+            </button>
+            <div class="dispasswd">
+                <span>忘记密码？</span>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-2 col-xs-1 column">
+        </div>
+    </div>
+</div>
+
+<script>
+			$(document).ready(function() {
+
+				<!--$.ajax({-->
+					<!--type: "get",-->
+					<!--url: "http://localhost:8282/login/",-->
+					<!--dataType: "imger/jpeg",-->
+					<!--success: function(data) {-->
+						<!--console.log(data);-->
+						<!--$("yzimage").attr("src", data);-->
+					<!--},-->
+					<!--error: function(xhr, status, error) {-->
+						<!--console.log(error);-->
+					<!--}-->
+				<!--});-->
+
+				$("#submit").click(function() {
+					console.log($("#studentId").val());
+					console.log($("#yzm").val());
+					$.ajax({
+						url: '{{ url_for('login.login') }}',
+						type: 'POST',
+						data: {
+							'studentId': $("#studentId").val(),
+							'password': $("#password").val(),
+							'yzm': $("#yzm").val(),
+						},
+						//						beforeSend: function(xhr, settings) {
+						//							xhrSetCSRF(xhr, settings);
+						//						},
+						success: function(result,status,xhr) {
+							console.log(result.code);
+							if (result.code == 200) {
+							    window.location.href = result.localhost;
+							    // window.open(result.localhost);
+							} else {
+							    window.location.href = result.localhost;
+							}
+						}
+					});
+				});
+
+			})
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+
+</html>
